@@ -17,7 +17,15 @@ const create = (bodyHome) => {
         .returning(['house_id','title','description','guests','address','active','created_at' ])
 }
 
+const findAll = () => {
+    //Obtener todos los registros de la tabla HOMES
+    return knex
+        .select(['house_id','title','description','guests','address','active','created_at'])
+        .from('homes')
+}
+
 // Paso #3 Exportar mis funciones para que sean accesibles desde el controlador
 module.exports = {
-    create
+    create,
+    findAll
 }
