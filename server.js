@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 //Importar las rutas de mi vista de Home
 const homeRoutes = require('./routes/homeRoutes');
