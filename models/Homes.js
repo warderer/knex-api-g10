@@ -32,9 +32,18 @@ const findOne = (houseId) => {
         .where({ house_id: houseId });
 }
 
+const update = (houseId, bodyToUpdate) => {
+    return knex
+        .update(bodyToUpdate) //La información a actualizar
+        .from('homes')
+        .where({ house_id: houseId })
+        .returning(['house_id','title','description','guests','address','active','created_at'])
+}
+
 // Paso #3 Exportar mis funciones para que sean accesibles desde el controlador
 module.exports = {
     create,
     findAll,
-    findOne
+    findOne,
+    update
 }
