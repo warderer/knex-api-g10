@@ -24,8 +24,17 @@ const findAll = () => {
         .from('homes')
 }
 
+const findOne = (houseId) => {
+    // Select title, description ... etc FROM 'homes' WHERE house_id = houseId
+    return knex
+        .select(['house_id','title','description','guests','address','active','created_at'])
+        .from('homes')
+        .where({ house_id: houseId });
+}
+
 // Paso #3 Exportar mis funciones para que sean accesibles desde el controlador
 module.exports = {
     create,
-    findAll
+    findAll,
+    findOne
 }
