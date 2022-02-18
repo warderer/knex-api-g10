@@ -22,6 +22,7 @@ const findAll = () => {
     return knex
         .select(['house_id','title','description','guests','address','active','created_at'])
         .from('homes')
+        .where({ active: true }); //traemos solo los campos que no hayamos hecho softdelete
 }
 
 const findOne = (houseId) => {
@@ -29,7 +30,8 @@ const findOne = (houseId) => {
     return knex
         .select(['house_id','title','description','guests','address','active','created_at'])
         .from('homes')
-        .where({ house_id: houseId });
+        .where({ house_id: houseId })
+        .where({ active: true }); //traemos solo los campos que no hayamos hecho softdelete
 }
 
 const update = (houseId, bodyToUpdate) => {
