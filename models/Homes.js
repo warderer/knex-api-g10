@@ -58,6 +58,20 @@ const softDelete = (houseId) => {
         .where({ house_id: houseId })
 }
 
+/* Vamos a añadir una función especifica para HomeModel
+    Esta función nos devolvera todos los datos (de homes y users)
+    para una propiedad en especifico (house_id)
+*/
+const findOneWithUser = (houseId) => {
+    return knex
+        .select()
+        .from('homes')
+        .join('users','users.user_id', '=', 'homes.fk_user')
+        .where({ house_id: houseId })
+        //Join: Con que tabla se va a unir,
+        //Select: Podemos pedir datos especificos con [ nombre.tabla, nombre.tabla ]
+}
+
 // Paso #3 Exportar mis funciones para que sean accesibles desde el controlador
 module.exports = {
     create,
@@ -65,5 +79,6 @@ module.exports = {
     findOne,
     update,
     destroy,
-    softDelete
+    softDelete,
+    findOneWithUser
 }

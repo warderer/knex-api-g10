@@ -65,11 +65,22 @@ const softDeleteOneHome = (req, res) => {
         })
 }
 
+const findOneWithUser = (req, res) => {
+    ModelHomes.findOneWithUser(req.params.idHome)
+    .then((row) => {
+        res.status(200).send(row);
+    })
+    .catch((err)=> {
+        res.status(400).send(err);
+    })
+};
+
 module.exports = {
     createHome,
     findAllHomes,
     findOneHome,
     updateOneHome,
     destroyOneHome,
-    softDeleteOneHome
+    softDeleteOneHome,
+    findOneWithUser
 }
