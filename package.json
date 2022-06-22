@@ -2,10 +2,10 @@
   "name": "knex-api-g10",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -e .env server.js"
+    "dev": "nodemon -w . -w .env server.js"
   },
   "keywords": [],
   "author": "",
